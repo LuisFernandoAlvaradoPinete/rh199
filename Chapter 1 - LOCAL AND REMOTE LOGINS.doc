@@ -1,0 +1,64 @@
+
+LOCAL AND REMOTE LOGINS - CONEXIONES LOCALES Y REMOTAS
+
+	* Accessing the Command Line Using the Local Console
+	* Conﬁguring SSH Key-based Authentication
+	* Getting Help From Red Hat
+
+
+******** Acceso a la linea de comandos usando la consola local **************************************************
+------------EL SHELL BASH---------
+-La linea de comandos Linux es proporcionada por el programa llamado shell.
+-La SHELL que trabaja RedHat es llamada BASH (urne-Again Shell).
+-Cuando la SHELL espera por una cadena, caracter o comando, sel le llama SHELL PROMPT.
+-Cuando un usuaro regular trabaja con SHELL, el PROMPT termina con un signo '$'.
+-Cuando el superusuario (root) hace uso del PROMPT, el signo cambia un '#'.
+
+---VIRTUAL CONSOLES - CONSOLAS VIRTUALES----------
+-Los usuarios acceden a SHELL BASH atraves de una terminal, se puede configurar el acceso atraves de puertos serie. El acceso
+a SHELL BASH tambien se puede obtener a traves de una consola virtual.
+-La consola fisica de una maquia Linux admite multiples consolas virtuales, y cada una de estas consolas virtuales admite una sesión independiente.
+-Hay disponibles 5 solicitudes de inicio de sesión, siendo de 2 a 6, con el entorno grafico configurado, y sin el entorno grafico hay 1 a 5 solicitudes.
+
+-----Lo esencial de SHELL------------
+Los comandos estan compuestos por tres partes basica que son:
+-****El comando a ejecutar o el programa en ejecución****-
+-****Opciones para ajustar el comportamiento del comando****-
+-****Los argumentos, que son el objetivo del comando****-
+
+-Las opciones por lo regular comienzan con una o dos dashes por ejemplo | -a --all |.
+-Los argumentos son los objetivos sobre los cuales opera el comando.
+
+-Ejemplo: usermod -L 'morgan' - el efecto que genera este comando es bloquear la contraseña de la cuenta del usuario morgan.
+-Todos los comandos incluyen una opcion de ayuda [command] --help.
+
+       Description                                                                                       Term
+	   
+-The interpreter that executes commands typed as strings.                                                <Shell>
+
+-The visual cue that indicates an interactive shell is waiting for the user to type a command.           <Prompt>
+
+-The name of a program to run.                     													     <Command>
+
+-The part of the command line that adjusts the behavior of a command.									 <Option>
+
+-The part of the command line that speciﬁes the target that the command should operate on.               <Argument>
+
+-The hardware display and keyboard used to interact with a system.									     <Physical console>
+
+-One of multiple logical consoles that can each support an independent login session.				     <Virtual console>
+
+-An interface that provides a display for output and a keyboard for input to a shell session.			 <Terminal>
+
+*****************************************************************************************************************
+
+******** Configuración de la Autenticación basada en llaves SSH **************************************************
+
+-------Autenticacion basadas en llaves SSH--------
+- Los usuarios se puden identificar atraves de ssh sin necesidad de un password, usando la autenticacion atraves de llaves publicas SSH.
+- El esque consiste la autenticacion atraves de llave publica-privada, donde la llave privada se utiliza como credencial de autenticacion, como una contraseña, la llave privada debe mantenerse secreta y segura.
+-
+******************************************************************************************************************
+
+******** Obtención de Ayuda de RedHat ****************************************************************************
+******************************************************************************************************************
