@@ -57,7 +57,149 @@ Los comandos estan compuestos por tres partes basica que son:
 -------Autenticacion basadas en llaves SSH--------
 - Los usuarios se puden identificar atraves de ssh sin necesidad de un password, usando la autenticacion atraves de llaves publicas SSH.
 - El esque consiste la autenticacion atraves de llave publica-privada, donde la llave privada se utiliza como credencial de autenticacion, como una contraseña, la llave privada debe mantenerse secreta y segura.
--
+- La llave publica se copia a los sistemas en que el usuario se quiera loguear, y la llave privada se usa para verificar al usuaio.
+- La llave publica no es necesariamente secreta.
+- Generando las llaves ssh con:
+	-- ssh-keygen 
+- ~/.ssh/id_rsa - archivo que guarda la llave publica.
+- ~/.ssh/id_rsa.pub - archivo para la llave privada.
+- Cuando se generan llaves ssh, se puede agrgar una frase de contraseña que proteger el acceso a la clave privada.
+- El uso de contraseña para la llave privada, quiere decir que cuando se hace uso de la llave privada es necesario introducir
+esta frase de contraseña, pero este puede ser evitado usando ssh-agent al que se le puede proporcionar la contraseña con el
+comando ssh-add, y este proporcionara la contrseña automaticamente.
+
+- Los privilegios en las llaves ssh son:
+	- 600 para la llave privada
+	- 644 para la llave publica
+	
+	
+-- SSH Opciones del comando
+	-A: Habilita el reenvío del agente de autenticación. También se puede especificar en función del host en un archivo 
+	    de configuración. El reenvío de agentes debe utilizarse con precaución. Los usuarios con autorización para evitar 
+	    los permisos de archivo en el host remoto pueden tener acceso al agente local a través de la conexión reenviada 
+	    Los piratas informáticos no pueden obtener información de claves del agente, aunque pueden realizar operaciones con 
+	    las claves que les permiten autenticarse utilizando las identidades incluidas en el agente.
+	    
+	-a: Deshabilita el reenvío del agente de autenticación. (Este es el valor predeterminado).
+	
+	-b bind_address: Especifique la interfaz desde la que transmitir en las computadoras con varias interfaces o 
+	                 direcciones asociadas.
+			
+	-c cipher_spec: Una lista de cifrados separados por comas especificados en orden de preferencia. 
+	                El valor predeterminado es "aes128-ctr,aes128-cbc,aes192-ctr,aes192-cbc,aes256-ctr,aes256-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour". 
+			Si la conexión se establece para ejecutarse en modo FIPS, el valor predeterminado es "aes128-ctr,aes128-cbc,aes192-ctr,aes192-cbc,aes256-ctr,aes256-cbc,3des-cbc".
+
+    			La versión 1 del protocolo (que no se recomienda) permite la especificación de un solo cifrado. 
+			Los valores compatibles son "3des", "blowfish" y "des".
+			
+	-C: Habilita la compresión de todos los datos transmitidos. La compresión es aconsejable en líneas de módem y otras 
+	    conexiones lentas, pero ralentizará la velocidad de respuesta en redes rápidas.
+	    
+	-e escape_character: Establece el carácter de escape para la sesión del terminal. El valor predeterminado es una 
+	                     tilde (~). Establecer el carácter de escape como 'none' significa que no existe ningún carácter 
+			     de escape y la tilde funciona como cualquier otro carácter. Se encuentran disponibles las 
+			     siguientes secuencias de escape. (Sustituya la tilde por su escape_character designado.)
+
+        		     ~. Finalizar la conexión.
+       			     ~R Solicitar regeneración de clave (solamente versión 2 del protocolo SSH).
+        		     ~# Indicar las conexiones reenviadas.
+       			     ~? Mostrar las secuencias de escape disponibles.
+       			     ~~ Escriba dos veces el carácter de escape para enviársela al host.
+
+	-E provider: Utiliza el proveedor especificado como el proveedor de claves externo.
+	
+	-f: Coloca al cliente en segundo plano antes de la ejecución de un comando.
+	
+	-F config_file: Especifica un archivo alternativo de configuración para utilizarlo con esta conexión. 
+			Si se especifica un archivo de configuración en la línea de comando, se ignorarán los otros archivos 
+			de configuración.
+			
+	-g: Activa puertos Gateway Los hosts remotos pueden conectarse a los puertos locales reenviados.
+	
+	-h: Muestra un resumen de opciones de línea de comandos.
+	
+	-H scheme: Especifica qué esquema de configuración SSH utilizar para esta conexión.
+	
+	-i key_file: Especifica una clave privada para la autenticación de claves. También se puede especificar los archivos 
+		     de claves en función del host en un archivo de configuración. Se pueden tener múltiples opciones -i 
+		     (y múltiples claves especificadas en un archivo de configuración). Utilice comillas si el archivo o la 
+		     ruta incluyen espacios.
+		     
+	-k directory: Especifica una ubicación alternativa para los archivos de configuración, clave de host y clave de usuario. 
+	              *Nota: Cuando se utiliza -k, las teclas de host se leen y se escriben desde la ubicación especificada únicamente 
+		      si ya existe un archivo de hosts conocidos en la ubicación. Si no se encuentra ningún archivo de hosts conocidos,
+		      las claves de host se leen y se escriben en el archivo de hosts conocidos de la ubicación predeterminada.
+		      
+	-l login_name: Especifica un nombre para utilizar en el inicio de sesión de la computadora remota. También se puede 
+	               especificar en el archivo de configuración.
+		       
+	-L localport:remotehost:hostport: Redirecciona los datos desde el puerto local especificado, a través del túnel seguro 
+	                                  hasta el host y el puerto de destino especificados. Reenvío de puertos locales Los 
+					  reenvíos de puertos también se pueden especificar en el archivo de configuración. 
+					  No puede reenviar puertos con privilegios (números de puerto menores a 1024) a menos 
+					  que haya iniciado la sesión como administrador. Las direcciones IPv6 se pueden 
+					  especificar con una sintaxis alternativa: port/host/hostport.
+					  
+	-m mac_spec: Especifica uno o más algoritmos MAC separados por comas para utilizar en esta conexión. Especifica los 
+		     algoritmos en orden de preferencia. El valor predeterminado es "hmac-sha1,hmac-sha256,hmac-sha512,hmac-md5,hmac-ripemd160,hmac-sha1-96,hmac-md5-96". 
+		     Si la conexión se establece para ser ejecutada en modo FIPS, el valor predeterminado es "hmac-sha1,hmac-sha256,hmac-sha512".
+		     
+	-N: No ejecute un comando remoto. Esto es útil para realizar la configuración solo del reenvío de puertos 
+	    (solo versión 2 del protocolo).
+	    
+	-o option: Configura cualquier opción compatible según el archivo de configuración. Por ejemplo:
+	           ssh "-o FIPSMode=yes" myuser@myhost
+
+	-p port: Especifica el puerto a conectar en el servidor. El valor predeterminado es 22, que es el valor estándar de 
+	         las conexiones Secure Shell. También se puede especificar en función del host en un archivo de configuración.
+		 
+	-q: Habilita el modo silencio, que suprime todos los mensajes de advertencia y de diagnóstico, incluidos los banners.
+	
+	-R localport:remotehost:hostport: Redirecciona los datos de un puerto remoto especificado (en la computadora que ejecuta
+					  el servidor Secure Shell), a través del túnel seguro hasta el host y el puerto de 
+					  destino especificados. Reenvío de puertos remotos Los reenvíos de puertos también se 
+					  pueden especificar en el archivo de configuración. No puede reenviar puertos con 
+					  privilegios (números de puerto menores a 1024) a menos que haya iniciado la sesión 
+					  como administrador. Las direcciones IPv6 se pueden especificar con una sintaxis 
+					  alternativa: port/host/hostport.
+					  
+	-S: No ejecute un shell.
+	
+	-t: Fuerza una ubicación tty incluso si se especifica un comando.
+	
+	-T: Desactiva la asignación de pseudo-tty.
+	
+	-v: Ajusta el nivel de depuración del modo verboso, que es equivalente a ajustar el nivel de depuración en 2.
+	
+	-V: Muestra el nombre del producto y la información de la versión y sale. Si se especifican otras opciones en la línea 
+	    de comando, se ignorarán.
+	    
+	-x: Deshabilita el reenvío de la conexión X11.
+	
+	-X: Habilita el reenvío de la conexión X11 y trata a los clientes sin confianza. Los clientes X11 sin confianza 
+	    remotos no pueden manipular los datos pertenecientes a los clientes X11 de confianza.
+	    
+	    El reenvío X11 debe utilizarse con precaución. Los usuarios con autorización para evitar los permisos de archivo en 
+	    el host remoto (para la base de datos de autorización X del usuario) pueden tener acceso a la pantalla X11 local a 
+	    través de la conexión reenviada. Un pirata puede realizar entonces actividades como el control de las pulsaciones 
+	    del teclado.
+	    
+	-Y: Habilita el reenvío de la conexión X11 y trata a los clientes X11 como clientes de confianza.
+	    
+	    El reenvío X11 debe utilizarse con precaución. Los usuarios con autorización para evitar los permisos de archivo en 
+	    el host remoto (para la base de datos de autorización X del usuario) pueden tener acceso a la pantalla X11 local a 
+	    través de la conexión reenviada. Un pirata puede realizar entonces actividades como el control de las pulsaciones 
+	    del teclado.
+	    
+	-1: Fuerza ssh para que intente solamente la versión 1 del protocolo. La versión 1 del protocolo no se aconseja.
+	
+	-2: Fuerza ssh para que intente solamente la versión 2 del protocolo.
+	
+	-4: Hace que las conexiones utilicen obligatoriamente solo direcciones IPv4.
+	
+	-6: Hace que las conexiones utilicen obligatoriamente solo direcciones IPv6.
+
+
 ******************************************************************************************************************
 
 ******** Obtención de Ayuda de RedHat ****************************************************************************
