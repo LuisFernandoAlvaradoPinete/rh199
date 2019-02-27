@@ -38,17 +38,17 @@ Los comandos estan compuestos por tres partes basica que son:
 
 -The visual cue that indicates an interactive shell is waiting for the user to type a command.           <Prompt>
 
--The name of a program to run.                     													     <Command>
+-The name of a program to run.                          						 <Command>
 
--The part of the command line that adjusts the behavior of a command.									 <Option>
+-The part of the command line that adjusts the behavior of a command.					 <Option>
 
 -The part of the command line that speciﬁes the target that the command should operate on.               <Argument>
 
--The hardware display and keyboard used to interact with a system.									     <Physical console>
+-The hardware display and keyboard used to interact with a system.		         		 <Physical console>
 
--One of multiple logical consoles that can each support an independent login session.				     <Virtual console>
+-One of multiple logical consoles that can each support an independent login session.	                 <Virtual console>
 
--An interface that provides a display for output and a keyboard for input to a shell session.			 <Terminal>
+-An interface that provides a display for output and a keyboard for input to a shell session.	         <Terminal>
 
 *****************************************************************************************************************
 
@@ -203,4 +203,17 @@ comando ssh-add, y este proporcionara la contrseña automaticamente.
 ******************************************************************************************************************
 
 ******** Obtención de Ayuda de RedHat ****************************************************************************
+
+---------------Portal del Cliente RedHat----------------
+ - https://access.redhat.com
+ - Los clientes pueden:
+ 	- Acceso a todo lo que proporciona sus supscriopción.
+	- Buscar soluciones.
+	- Preguntas Frecuentes.
+	- Acceso Artículos.
+	- Adjuntar susbscripciones.
+	- Descargas de software
+	- https://access.redhat.com/help/.
+
+
 ******************************************************************************************************************
