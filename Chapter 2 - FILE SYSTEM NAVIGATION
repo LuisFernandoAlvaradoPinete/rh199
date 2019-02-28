@@ -1,7 +1,56 @@
 
 FILE SYSTEM NAVIGATION - Sistema de Archivos de Navegación
+            
+            * The Linux File System Hierarchy (and Practice)
+            * Managing Files Using Command-Line Tools (and Practice)
+            * Making Links Between Files (and Practice)
 
--------------------------------------
+
+*************************************** Jerarquia del Sistema de Archivos de Linux **********************************
+
+-------------------------------------Jerarquía del Sistema de Archivos----------------------------------------
+Tdos los archivos en un Sistema Linux estan almacenados en el Sistema de Archivos oreganizado en un solo árbol invertido de directorios.
+
+                                    DIRECTORY PURPOSE                                          LOCATION
+
+This directory contains static, persistent system conﬁguration data.                       /etc
+
+This is the system's root directory.                                                       /
+
+User home directories are located under this directory.                                    /home
+
+This is the root account's home directory.                                                 /root
+
+This directory contains dynamic conﬁguration data, such as FTP and websites.                    /var
+
+Regular user commands and utilities are located here.                                          /usr/bin
+
+System administration binaries, for root use, are here.                                         /usr/sbin
+
+Temporary ﬁles are stored here.                                                                  /tmp   
+
+Contains dynamic, non-persistent application runtime data.                                      /run
+
+Contains installed software programs and libraries.                                         /usr
+
+En RHEL 7, 4 directorios ej raíz '/' tienen contenido identico en el directorio /usr
+
+- /bin y /usr/bin
+- /sbin y /usr/sbin
+- /lib y /usr/lib
+- /lib64 y /usr/lib64
+***************************************************************************************************************************
+
+********************************* Gestionando Archivos usando las Herramientas de la Linea de Comandos ***********************
+
+------------------------------------- Gestión de Archivos de la Linea de Comandos -------------------------------------------
+Cuando se trabaja en la línea de comandos, la administración de archivos requiere conocer el directorio de trabajo actual para 
+elegir la sintaxis de ruta absoluta o relativa como la más eficiente para la tarea inmediata.
+
+
+
+******************************************************************************************************************************
+
 
 
 
